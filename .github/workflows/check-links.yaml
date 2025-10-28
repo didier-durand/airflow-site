@@ -36,9 +36,22 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
+      - name: Generate the sitemap
+        id: sitemap
+        uses: cicirello/generate-sitemap@v1
+        with:
+          base-url-path: 'https://airflow.apache.org/docs/'
+
+      - name: Output stats
+        run: |
+              echo "sitemap-path = ${{ steps.sitemap.outputs.sitemap-path }}"
+              echo "url-count = ${{ steps.sitemap.outputs.url-count }}"
+              echo "excluded-count = ${{ steps.sitemap.outputs.excluded-count }}"
+
       - name: Link Checker
         id: lychee
         uses: lycheeverse/lychee-action@v2
         with:
           fail: true
+          output: 'lychee.md'
           args: 'https://airflow.apache.org/docs/'
