@@ -42,6 +42,8 @@ jobs:
         uses: cicirello/generate-sitemap@v1
         with:
           base-url-path: 'https://airflow.apache.org/docs/'
+          sitemap-format: 'txt'
+
 
       - name: Output stats
         run: |
