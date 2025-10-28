@@ -23,6 +23,7 @@ name: Check Doc Links
 # is no activity on this repo itself.
 
 on:
+  push:
   repository_dispatch:
   workflow_dispatch:
   schedule:
