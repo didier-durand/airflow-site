@@ -40,7 +40,8 @@ jobs:
       # see https://github.com/cicirello/generate-sitemap
       - name: Check npm
         run: |
-          echo "npm version $(npm --version)"
+          echo "npm version:  $(npm --version)"
+          npm install broken-link-checker -g
 
 
       # see https://github.com/cicirello/generate-sitemap
