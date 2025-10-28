@@ -37,6 +37,13 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
+      # see https://github.com/cicirello/generate-sitemap
+      - name: Check npm
+        run: |
+          echo "npm version $(npm --version)
+
+
+      # see https://github.com/cicirello/generate-sitemap
       - name: Generate the sitemap
         id: sitemap
         uses: cicirello/generate-sitemap@v1
@@ -44,7 +51,7 @@ jobs:
           base-url-path: 'https://airflow.apache.org/docs/'
           sitemap-format: 'txt'
 
-
+      # docker run --rm tennox/linkcheck -d https://airflow.apache.org/docs/
       - name: Output stats
         run: |
               echo "sitemap-path = ${{ steps.sitemap.outputs.sitemap-path }}"
